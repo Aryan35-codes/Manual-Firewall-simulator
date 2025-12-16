@@ -100,3 +100,24 @@ npm run dev
 *   `POST /api/rules`: Adds a new rule.
 *   `GET /api/logs`: Retrieves saved capture sessions.
 *   `POST /api/logs/save`: Saves the current list of packets.
+
+## 🌐 GitHub Pages Deployment
+
+The app is deployed at: https://aryan35-codes.github.io/Manual-Firewall-Simulator/
+
+### Demo Mode
+
+By default, the app runs in **demo mode** when deployed to GitHub Pages. This mode uses client-side packet analysis and doesn't require a backend server.
+
+### Connecting to a Backend
+
+To connect to a real Spring Boot backend:
+
+1. Deploy your backend to a service like Render, Railway, or Heroku
+2. Create a `.env` file in the `react-app` directory:
+   ```
+   VITE_API_BASE_URL=https://your-backend-url.com
+   ```
+3. Rebuild and redeploy the app
+
+The app will automatically fall back to demo mode if the backend is unavailable.

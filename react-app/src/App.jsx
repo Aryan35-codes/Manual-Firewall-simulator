@@ -3,6 +3,8 @@ import Dashboard from './components/Dashboard'
 import LiveCapture from './components/LiveCapture'
 import SavedLogs from './components/SavedLogs'
 import Settings from './components/Settings'
+import config from './config'
+import { analyzePacket } from './utils/packetAnalyzer'
 
 function App() {
     const [activeView, setActiveView] = useState('dashboard')
@@ -30,8 +32,8 @@ function App() {
                     { proto: 'SSH', port: 22 },
                     { proto: 'FTP', port: 21 },
                     { proto: 'DNS', port: 53 },
-                    { proto: 'TCP', port: Math.floor(Math.random() * 65535) }, // Random TCP
-                    { proto: 'UDP', port: Math.floor(Math.random() * 65535) }, // Random UDP
+                    { proto: 'TCP', port: Math.floor(Math.random() * 65535) },
+                    { proto: 'UDP', port: Math.floor(Math.random() * 65535) },
                     { proto: 'ICMP', port: 0 }
                 ];
 
@@ -40,7 +42,6 @@ function App() {
                 const newPacket = {
                     id: Date.now().toString(),
                     sourceIp: `192.168.1.${Math.floor(Math.random() * 255)}`,
-                    // Mix of local and external traffic to match different rules
                     destIp: Math.random() > 0.5
                         ? `192.168.1.${Math.floor(Math.random() * 255)}`
                         : `142.250.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`,
@@ -49,29 +50,35 @@ function App() {
                     payload: 'Simulated Data'
                 }
 
-                try {
-                    const res = await fetch('http://127.0.0.1:8080/api/analyze', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(newPacket)
-                    })
-                    const analysis = await res.json()
+                let analysis;
 
-                    const processedPacket = {
-                        ...newPacket,
-                        time: new Date().toLocaleTimeString(),
-                        analysis: analysis
+                // Try backend if configured, otherwise use demo mode
+                if (config.API_BASE_URL) {
+                    try {
+                        const res = await fetch(`${config.API_BASE_URL}/api/analyze`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(newPacket),
+                            signal: AbortSignal.timeout(5000) // 5 second timeout
+                        })
+                        analysis = await res.json()
+                    } catch (err) {
+                        console.warn("Backend unavailable, using demo mode:", err.message)
+                        // Fall back to client-side analysis
+                        analysis = analyzePacket(newPacket)
                     }
-
-                    setPackets(prev => [processedPacket, ...prev].slice(0, 500)) // Keep last 500
-                } catch (err) {
-                    console.error("Analysis failed:", err)
-                    // Only alert once to avoid spamming
-                    if (!window.hasAlertedError) {
-                        alert("Backend connection failed! Is the Java server running on port 8080?")
-                        window.hasAlertedError = true
-                    }
+                } else {
+                    // Demo mode - use client-side analysis
+                    analysis = analyzePacket(newPacket)
                 }
+
+                const processedPacket = {
+                    ...newPacket,
+                    time: new Date().toLocaleTimeString(),
+                    analysis: analysis
+                }
+
+                setPackets(prev => [processedPacket, ...prev].slice(0, 500))
             }, 1000)
         }
         return () => clearInterval(interval)
