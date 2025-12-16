@@ -1,0 +1,8 @@
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/NetworkSnifferApplication.java
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/controller/FirewallController.java
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/controller/LogController.java
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/dto/AnalysisResult.java
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/model/Packet.java
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/model/Rule.java
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/service/FirewallService.java
+/home/mario/Downloads/JavaProject/java-backend/src/main/java/com/network/sniffer/service/LogService.java

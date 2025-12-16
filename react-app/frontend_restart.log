@@ -1,0 +1,11 @@
+nohup: ignoring input
+
+> network-sniffer-app@0.0.0 dev
+> vite --host
+
+
+  VITE v5.4.21  ready in 627 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://172.20.10.7:3000/
+12:19:57 pm [vite] hmr update /src/App.jsx

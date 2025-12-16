@@ -1,0 +1,26 @@
+* Host localhost:8080 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:8080...
+* Connected to localhost (::1) port 8080
+* using HTTP/1.x
+> GET /api/rules HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/8.15.0
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 
+< Vary: Origin
+< Vary: Access-Control-Request-Method
+< Vary: Access-Control-Request-Headers
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Fri, 12 Dec 2025 04:47:30 GMT
+< 
+{ [361 bytes data]
+100   354    0   354    0     0  47018      0 --:--:-- --:--:-- --:--:-- 50571
+* Connection #0 to host localhost left intact
+[{"id":1,"sourceIp":"*","destIp":"192.168.1.10","protocol":"TCP","port":80,"action":"ALLOW"},{"id":2,"sourceIp":"*","destIp":"192.168.1.10","protocol":"TCP","port":443,"action":"ALLOW"},{"id":3,"sourceIp":"10.0.0.5","destIp":"*","protocol":"UDP","port":53,"action":"ALLOW"},{"id":4,"sourceIp":"*","destIp":"*","protocol":"ICMP","port":0,"action":"DENY"}]

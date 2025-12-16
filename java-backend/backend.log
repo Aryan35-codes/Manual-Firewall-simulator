@@ -1,0 +1,28 @@
+nohup: ignoring input
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.3)
+
+2025-12-12T12:21:55.963+05:30  INFO 318376 --- [           main] c.n.sniffer.NetworkSnifferApplication    : Starting NetworkSnifferApplication v0.0.1-SNAPSHOT using Java 25.0.1 with PID 318376 (/home/mario/Downloads/JavaProject/java-backend/target/sniffer-0.0.1-SNAPSHOT.jar started by mario in /home/mario/Downloads/JavaProject/java-backend)
+2025-12-12T12:21:55.967+05:30  INFO 318376 --- [           main] c.n.sniffer.NetworkSnifferApplication    : No active profile set, falling back to 1 default profile: "default"
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/home/mario/Downloads/JavaProject/java-backend/target/sniffer-0.0.1-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.28.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2025-12-12T12:21:57.407+05:30  INFO 318376 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-12T12:21:57.434+05:30  INFO 318376 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-12T12:21:57.434+05:30  INFO 318376 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2025-12-12T12:21:57.480+05:30  INFO 318376 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-12T12:21:57.481+05:30  INFO 318376 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1422 ms
+2025-12-12T12:21:58.040+05:30  INFO 318376 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-12-12T12:21:58.072+05:30  INFO 318376 --- [           main] c.n.sniffer.NetworkSnifferApplication    : Started NetworkSnifferApplication in 2.907 seconds (process running for 3.705)
+2025-12-12T12:23:20.878+05:30  INFO 318376 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-12T12:23:20.879+05:30  INFO 318376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-12T12:23:20.880+05:30  INFO 318376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
