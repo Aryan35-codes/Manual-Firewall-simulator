@@ -5,7 +5,7 @@ const firewallRules = [
         name: 'Block SSH from external',
         protocol: 'SSH',
         port: 22,
-        sourcePattern: /^(?!192\.168\.)/,
+        sourcePattern: /^(?!192\.168\.)/,  // Matches non-192.168.x.x addresses (external networks)
         action: 'DENY',
         reason: 'SSH blocked from external networks'
     },
